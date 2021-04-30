@@ -85,7 +85,6 @@ router.patch('/users/me',auth,async(req,res)=>{
 router.delete('/users/me',auth,async(req,res)=>{
     try{
         await req.user.remove()
-        sendGoodbyMail(req.user.email,req.user.name)
         res.send(req.user)
     }catch(e){
         res.status(400).send(e)
